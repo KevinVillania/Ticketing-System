@@ -2,12 +2,12 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
-#include <string>
+//#include <string>
 #include <map>
 using namespace std;
 
 //Make a print function iterator, and add function iterator
-//included lists of destination
+//included lists of destination, error handling on input
 //PROBLEM: CODE GETTING MESSY AND LONG
 
 
@@ -19,32 +19,44 @@ vector <int> groupAge;
 
 int main()
 {
-
+    //map of fare matrix
     map<int, int> destination_map;
-
     destination_map[1] = 15;
     destination_map[2] = 20;
     destination_map[3] = 25;
     destination_map[4] = 10;
 
 
-    cout << "WELCOME TO MALUPET BUS STATION" << endl;
+    cout << "WELCOME TO SOLID NORTH BUS STATION" << endl;
     cout << "_________________________________" << endl << endl;
 
-    string destination[4] = {"Manila","Quezon City","Marikina","Standard Fare"};
+    string destination[4]{"Manila","Quezon City","Marikina","Standard Fare"};
     cout << "Select destination" << endl;
-    for(int i=0; i<=3; ++i){
 
+    //cout << destination_map[location]; fare checker
+    //prints destination array
+    for(int i=0; i<=3; ++i){
         cout << i+1 << " ===== " << destination[i] << endl;
     }
-    cin >> location;
 
-    //cout << destination_map[location];
+
+    // Checks if input is in the range of 1-4
+    cin >> location;
+    try{
+        if(location != 1 || location == 2 || location == 3 || location == 4){
+            throw 404;
+        }
+    }catch(int x){
+
+        cout << "error input not in choices " << endl;
+    }
+
+
 
     cout << "Enter number of people: ";
     cin >> numPeople;
 
-    cout << "Enter age of each person: " << endl;
+    cout << "Enter age of each person:" << endl;
 
     //Iterator to input age of people depending on the number of participant
     for(int i=1; i<=numPeople; ++i){
@@ -83,7 +95,7 @@ int main()
 
         discountedPrice = (numPeople*destination_map[location])*discount;
 
-        cout << "Total discounted price is equal to " << setprecision(5) << discountedPrice << " dollars" << endl;
+        cout << "Total discounted price is equal to " << discountedPrice << " dollars" << endl;
 
     }
 
