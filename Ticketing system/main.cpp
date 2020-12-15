@@ -43,7 +43,7 @@ int main()
     // Checks if input is in the range of 1-4
     cin >> location;
     try{
-        if(location != 1 || location == 2 || location == 3 || location == 4){
+        if(location != 1 && location != 2 && location != 3 && location != 4){
             throw 404;
         }
     }catch(int x){
