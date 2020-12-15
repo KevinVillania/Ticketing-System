@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1607958019 source:c:\users\kevin holden\documents\c++\ticketing system\main.cpp
+	<iostream>
+	<vector>
+	<iomanip>
+	<algorithm>
+	<string>
+	<map>
+
+1607868117 c:\users\kevin holden\documents\c++\ticketing system\ticketing.h
+
+1607868394 source:c:\users\kevin holden\documents\c++\ticketing system\ticketing.cpp
+	<iostream>
+	<vector>
+	<iomanip>
+	<algorithm>
+	"Ticketing.h"
+
