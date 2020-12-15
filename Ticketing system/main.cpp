@@ -41,7 +41,7 @@ int main()
 
     //cout << destination_map[location];
 
-    cout << "Enter number of people: " << endl;
+    cout << "Enter number of people: ";
     cin >> numPeople;
 
     cout << "Enter age of each person: " << endl;
