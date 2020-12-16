@@ -2,7 +2,6 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
-//#include <string>
 #include <map>
 using namespace std;
 
@@ -55,6 +54,13 @@ int main()
 
     cout << "Enter number of people: ";
     cin >> numPeople;
+    /*while(!(cin >> numPeople)|| (numpeople < 10)){
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please try again." << endl;
+    }*/
+
 
     cout << "Enter age of each person:" << endl;
 
