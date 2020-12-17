@@ -31,6 +31,13 @@ int main()
     destination_map[3] = 25;
     destination_map[4] = 10;
 
+    //map of destination
+    map<int, string> location_map;
+    location_map[15] = "Manila";
+    location_map[20] = "Quezon City";
+    location_map[25] = "Marikina";
+    location_map[10] = "Minimum Distance";
+
 
     cout << "WELCOME TO SOLID NORTH BUS STATION" << endl;
     cout << "_________________________________" << endl << endl;
@@ -117,6 +124,8 @@ int main()
 
         totalPrice = numPeople*destination_map[location];
         cout << "You need to be group of five (5) in order to avail the discount" << endl << endl;
+        cout << "From: Main Terminal" << endl;
+        cout << "To: " << location_map[destination_map[location]] << endl;
         cout << "Individual ticket cost: Php " << totalPrice/numPeople << endl;
         cout << "Standard pricing applies: " << numPeople*destination_map[location] << " pesos" << endl;
     }
