@@ -4,6 +4,7 @@ BUS TICKETING SYSTEM
 BY: Kevin Holden Villania
 written in C++, with input validation and fare
 depends on distance of destination
+FIRST BRANCH
 ================================================
 */
 
@@ -18,9 +19,12 @@ using namespace std;
 
 //included lists of destination, input validation, ind. ticket cost
 
-double discount, discountedPrice;
+double discount, discountedPrice, regularPrice;
 int ticketPrice, totalPrice, location, numPeople, age;
 vector <int> groupAge;
+vector <double> fare;
+
+int userInput();
 
 int main()
 {
@@ -115,6 +119,8 @@ int main()
 
         discountedPrice = (numPeople*destination_map[location])*discount;
 
+        cout << "From: Main Terminal" << endl;
+        cout << "To: " << location_map[destination_map[location]] << endl;
         cout << "Individual ticket cost: Php " << discountedPrice/numPeople << endl;
         cout << "Total discounted price is equal to " << discountedPrice << " pesos" << endl;
 
@@ -133,6 +139,46 @@ int main()
     cout << endl;
     cout << "==============================================" << endl;
     cout << "THANK YOU FOR RIDING WITH SOLID NORTH BUS CORP" << endl;
+}
+
+int userInput(){
+
+    string name;
+    int ageInd;
+    char twentyDiscount;
+    map<int, int> destination_map;
+
+    cout << "Enter name of passenger: ";
+    getline(cin,name);
+
+    cout << "Enter age: ";
+    while(!(cin>>ageInd)||(ageInd < 1 || age > 99)){
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Please enter age: ";
+    }
+
+    cout << "Senior Citizen or Student? Y/N: ";
+    while(!(cin >> twentyDiscount) || (twentyDiscount == 'Y'||twentyDiscount == 'N')){
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout << "Invalid input,\n" << "Y/N";
+    }
+    if(twentyDiscount == 'Y'){
+
+        discountedPrice = destination_map[location]*0.8;
+        fare.push_back(discountedPrice);
+    }
+    else{
+
+         regularPrice = destination_map[location];
+         fare.push_back(regularPrice);
+    }
+
+
+
 }
 
 
