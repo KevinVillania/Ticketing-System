@@ -52,7 +52,8 @@ int main()
 
     cout << "WELCOME TO SOLID NORTH BUS STATION" << endl;
     cout << "_________________________________" << endl << endl;
-
+    //getline(cin, name);
+   // cout << name;
     string destination[]{"Manila","Quezon City","Marikina","Standard Fare"};
     cout << "Select destination" << endl;
 
@@ -80,7 +81,7 @@ int main()
     }
 
     //Iterator to input age of people depending on the number of participant
-    for(int i=0; i<=numPeople; ++i){
+    for(int i=1; i<=numPeople; ++i){
         userInput();
     }
 
@@ -100,7 +101,7 @@ int userInput(){
     double discountedPrice;
     int totalPrice, location, numPeople, age;
     char twentyDiscount;
-    string name;
+    //string name;
 
     vector<int> groupAge;
     vector<double> fare;
@@ -121,13 +122,14 @@ int userInput(){
 
 
     cout << "Enter name of passenger: ";
+    cin.ignore();
     getline(cin, name);
 
     name1.push_back(name);
 
 
 
-    cout << "Enter age: ";
+    cout << "Age: ";
     while(!(cin>>age)||(age < 1 || age > 99)){
 
         cin.clear();
@@ -136,7 +138,7 @@ int userInput(){
     }
     groupAge.push_back(age);
 
-    cout << "With discount? Y/N" << endl;
+    cout << "With discount? Y/N";
     while(!(cin>>twentyDiscount)||(twentyDiscount != 'Y' && twentyDiscount!='N')){
 
         cin.clear();
