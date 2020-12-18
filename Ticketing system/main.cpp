@@ -12,22 +12,29 @@ FIRST BRANCH
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <string>
 using namespace std;
 
 //Make a print function iterator, and add function iterator
 //Add computation of fare matrix and student, senior citizen discount
+//BUGS: UNABLE TO PUSH BACK ON VECTOR NAME, FARE,
 
 //included lists of destination, input validation, ind. ticket cost
 
-double discount, discountedPrice, regularPrice;
-int ticketPrice, totalPrice, location, numPeople, age;
-vector <int> groupAge;
-vector <double> fare;
+double discountedPrice;
+int totalPrice, location, numPeople, age;
+string name;
+char twentyDiscount;
+
+vector<int> groupAge;
+vector<double> fare;
+vector<string> name1;
 
 int userInput();
 
 int main()
 {
+
     //map of fare matrix
     map<int, int> destination_map;
     destination_map[1] = 15;
@@ -55,7 +62,6 @@ int main()
         cout << i+1 << " =" << " Php " << destination_map[i+1] << " ===== " << destination[i] << endl;
     }
 
-
     // Checks if input is in the range of 1-4
     //cin >> location;
     while(!(cin >> location) || (location < 1 || location > 4)){
@@ -65,7 +71,6 @@ int main()
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
-
     cout << "Enter number of people: ";
     //Input validation, numPeople should be integer
     while(!(cin >> numPeople)|| (numPeople < 1 || numPeople > 20)){
@@ -74,68 +79,17 @@ int main()
         cout << "Invalid input, number not in range" << endl << "Enter a number: ";
     }
 
-    cout << "Enter age of each person:" << endl;
-
     //Iterator to input age of people depending on the number of participant
-    for(int i=1; i<=numPeople; ++i){
-
-        while(!(cin>>age)|| (age < 1 || age > 100)){
-            cout << "Error input" << endl;
-            cin.clear();
-            cin.ignore(1000,'\n');
-        }
-
-        groupAge.push_back(age);
+    for(int i=0; i<=numPeople; ++i){
+        userInput();
     }
 
-    //trial for shorter code for getting least age value
-    //same code function
-    sort(groupAge.begin(), groupAge.end());
-    //int leastAge = *min_element(groupAge.begin(),groupAge.end());
-
-    //Prints sorted list
-    cout << "Sorted age list is [ ";
-    for(int i=0; i<=groupAge.size()-1; ++i){
-
-        cout << groupAge[i] << " ";
-    }
-
-    cout << "] \n";
+    cout << "Passenger details" << endl;
+    cout << "From: Main Terminal" << endl;
+    cout << "To: " << location_map[destination_map[location]] << endl;
 
 
-    //int numberOfPeople = groupAge.size();
-    cout << "Number of people "<< numPeople << endl;
-
-    cout << endl;
-
-    if(numPeople >= 5){
-
-        //execute discount computation, least age basis for discount percentage
-        cout << "You are eligible for discounted price!" << endl << endl;
-
-        //Gets the age of the youngest person to be used as a discount percentage.
-        discount = 1.0-((groupAge[0]+.0)/100);
-        //cout << discount << endl; just a checker
-
-        discountedPrice = (numPeople*destination_map[location])*discount;
-
-        cout << "From: Main Terminal" << endl;
-        cout << "To: " << location_map[destination_map[location]] << endl;
-        cout << "Individual ticket cost: Php " << discountedPrice/numPeople << endl;
-        cout << "Total discounted price is equal to " << discountedPrice << " pesos" << endl;
-
-    }
-
-    else{
-
-        totalPrice = numPeople*destination_map[location];
-        cout << "You need to be group of five (5) in order to avail the discount" << endl << endl;
-        cout << "From: Main Terminal" << endl;
-        cout << "To: " << location_map[destination_map[location]] << endl;
-        cout << "Individual ticket cost: Php " << totalPrice/numPeople << endl;
-        cout << "Standard pricing applies: " << numPeople*destination_map[location] << " pesos" << endl;
-    }
-
+    cout << "Total ticket price: " << totalPrice << "pesos\n";
     cout << endl;
     cout << "==============================================" << endl;
     cout << "THANK YOU FOR RIDING WITH SOLID NORTH BUS CORP" << endl;
@@ -143,40 +97,61 @@ int main()
 
 int userInput(){
 
-    string name;
-    int ageInd;
+    double discountedPrice;
+    int totalPrice, location, numPeople, age;
     char twentyDiscount;
+    string name;
+
+    vector<int> groupAge;
+    vector<double> fare;
+    vector<string> name1;
+
     map<int, int> destination_map;
+    destination_map[1] = 15;
+    destination_map[2] = 20;
+    destination_map[3] = 25;
+    destination_map[4] = 10;
+
+    //map of destination
+    map<int, string> location_map;
+    location_map[15] = "Manila";
+    location_map[20] = "Quezon City";
+    location_map[25] = "Marikina";
+    location_map[10] = "Minimum Distance";
+
 
     cout << "Enter name of passenger: ";
-    getline(cin,name);
+    getline(cin, name);
+
+    name1.push_back(name);
+
+
 
     cout << "Enter age: ";
-    while(!(cin>>ageInd)||(ageInd < 1 || age > 99)){
+    while(!(cin>>age)||(age < 1 || age > 99)){
 
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
         cout << "Please enter age: ";
     }
+    groupAge.push_back(age);
 
-    cout << "Senior Citizen or Student? Y/N: ";
-    while(!(cin >> twentyDiscount) || (twentyDiscount == 'Y'||twentyDiscount == 'N')){
+    cout << "With discount? Y/N" << endl;
+    while(!(cin>>twentyDiscount)||(twentyDiscount != 'Y' && twentyDiscount!='N')){
 
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        cout << "Invalid input,\n" << "Y/N";
+        cin.ignore(1000,'\n');
+        cout << "Y/N? ";
     }
-    if(twentyDiscount == 'Y'){
-
-        discountedPrice = destination_map[location]*0.8;
+    if (twentyDiscount == 'Y'){
+        discountedPrice= 5;
         fare.push_back(discountedPrice);
     }
     else{
 
-         regularPrice = destination_map[location];
-         fare.push_back(regularPrice);
+        discountedPrice = 1;
+        fare.push_back(discountedPrice);
     }
-
 
 
 }
