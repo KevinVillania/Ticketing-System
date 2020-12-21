@@ -1,11 +1,10 @@
-/*
-================================================
+/*======================================================
 BUS TICKETING SYSTEM
 BY: Kevin Holden Villania
 written in C++, with input validation and fare
-depends on distance of destination
-================================================
-*/
+depends on distance of destination,
+Gets the passenger youngest age as discount percentage
+======================================================*/
 
 #include <iostream>
 #include <vector>
@@ -13,10 +12,6 @@ depends on distance of destination
 #include <map>
 using namespace std;
 
-//Make a print function iterator, and add function iterator
-//Add computation of fare matrix and student, senior citizen discount
-
-//included lists of destination, input validation, ind. ticket cost
 
 double discount, discountedPrice;
 int ticketPrice, totalPrice, location, numPeople, age;
