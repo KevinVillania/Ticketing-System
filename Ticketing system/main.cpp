@@ -1,11 +1,18 @@
-/*================================================
+/*==========================================================
 BUS TICKETING SYSTEM
 BY: Kevin Holden Villania
-written in C++, with input validation and fare
+Written in C++
+
+Bus ticketing system with input validation and fare
 depends on distance of destination, grants 20% discount
-for student and senior citizen
+for student and senior citizen.
+
+Implemented using for, while loops for iteration
+maps and vectors for dynamic array and storage.
+
+First project in C++ 12/29/2020
 FIRST BRANCH
-================================================*/
+=============================================================*/
 
 #include <iostream>
 #include <vector>
